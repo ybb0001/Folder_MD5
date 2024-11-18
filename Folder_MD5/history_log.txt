@@ -1,0 +1,130 @@
+2021-08-27 13:14:35	OK
+
+
+
+2021-08-27 13:14:59	NG
+
+Lost File:	APIDLL.dll
+
+
+2021-08-27 17:30:32	OK
+
+
+
+2021-08-27 17:30:45	NG
+
+Lost File:	APIDLL.dll
+
+
+2022-07-26 18:35:07	NG
+Lost File:	.vs
+Lost File:	APIDLL.dll
+Lost File:	DetectLargeBlemish3.dll
+Lost File:	EVisUtils.dll
+Lost File:	280_functionlist.xml
+Lost File:	280_functionlist_Cal_AWB.xml
+Lost File:	280_functionlist_Cal_QSC.xml
+Lost File:	280_functionlist_Color.xml
+Lost File:	288_functionlist.xml
+Lost File:	330_functionlist.xml
+Lost File:	340_functionlist.xml
+Lost File:	740_functionlist.xml
+Lost File:	Ji_Fun.dll
+Lost File:	Ji_Lib.dll
+Lost File:	Ji_Lib2.dll
+Lost File:	LSC_BPC_DLL.dll
+Lost File:	PMCCtrl.dll
+Lost File:	LSCCalibrationQDLL.dll
+Lost File:	Batch_Run.bat
+Lost File:	RunShadingCalibration.bat
+Lost File:	RunShadingCorrection.bat
+Lost File:	ShadingCalibrate.dll
+Lost File:	ShadingCalibrationSample.dll
+Lost File:	ShadingCalibrationSample.exe
+Lost File:	ShadingCorrectionSample.dll
+Lost File:	ShadingCorrectionSample.exe
+Lost File:	msvcp100d.dll
+Lost File:	msvcr100d.dll
+Lost File:	PDAF_MTK.ini
+Lost File:	pd_cali_dll.dll
+Lost File:	PDAFCalibrationTools_RevL_Dll.dll
+Lost File:	DCC.dll
+Lost File:	DCC_ver.dll
+Lost File:	LRC_ver.dll
+Lost File:	Setting1_for_LRCgain.ism
+Lost File:	Setting2_for_LRCver.ism
+Lost File:	Setting3_for_DCC.ism
+Lost File:	Setting4.ism
+Lost File:	Sony_DCC_gen.dll
+Lost File:	Sony_DCC_verify.dll
+Lost File:	Sony_LRC_2x1OCL_gen.dll
+Lost File:	Sony_LRC_2x1OCL_gen.ini
+Lost File:	Sony_LRC_2x1OCL_verify.dll
+Lost File:	Sony_LRC_2x1OCL_verify.ini
+Lost File:	dcc_ver_16x12_IMX586.ini
+Lost File:	dcc_ver_ver_8x6_IMX586_u7_9.ini
+Lost File:	lens8x6_IMX586_u7_9.ini
+Lost File:	lrc_gain_2x1OCL_586.ini
+Lost File:	lrc_ver_2x1OCL_586.ini
+Lost File:	QBC_Sen_Cal.dll
+Lost File:	QC4PDCv10_LIB_v100.dll
+Lost File:	Raw_LSC_dll.dll
+Lost File:	HM2_P.dat
+Lost File:	SFR_dll.dll
+Lost File:	AF_Actuator.ini
+Lost File:	DefaultPGM.ini
+Lost File:	ExtraScan.set
+Lost File:	GoogleInfo.set
+Lost File:	ISPSet.ini
+Lost File:	Info.set
+Lost File:	KeyLock.set
+Lost File:	OIS.ini
+Lost File:	OppoInfo.set
+Lost File:	OpticalCenter.ini
+Lost File:	PDAF_QUALCOMM.ini
+Lost File:	PDAF_SONY.ini
+Lost File:	PIMA_Setting.ini
+Lost File:	Project.ini
+Lost File:	QCAP.ini
+Lost File:	Rohm.ini
+Lost File:	SEM1215.ini
+Lost File:	SFR_NewChart.set
+Lost File:	SFR_NewChartSub.set
+Lost File:	Sensor.ini
+Lost File:	ThroughFocus.set
+Lost File:	XIAOMI_Blem.set
+Lost File:	current.atm
+Lost File:	Sharpness_bilinear_dll.dll
+Lost File:	SmallCircle.jpg
+Lost File:	Xiaomi_K7S_rev0_21081300.exe
+Lost File:	blemishRawDll.dll
+Lost File:	d2lib.dll
+Lost File:	dclib.dll
+Lost File:	dcm1lib.dll
+Lost File:	dglib.dll
+Lost File:	dgscrlib.dll
+Lost File:	jpeg62.dll
+Lost File:	libfftw3-3.dll
+Lost File:	libgditk_gcali_r4rcam.dll
+Lost File:	opencv_core2413.dll
+Lost File:	opencv_core2413d.dll
+Lost File:	opencv_highgui2413.dll
+Lost File:	opencv_highgui2413d.dll
+Lost File:	opencv_imgproc2413.dll
+Lost File:	opencv_imgproc2413d.dll
+Lost File:	opencv_world310.dll
+Lost File:	opencv_world310d.dll
+Lost File:	pthreadVC2.dll
+Lost File:	semco_ois.dll
+Lost File:	turbojpeg.dll
+
+2022-07-26 18:36:45	OK
+
+2022-07-26 18:37:00	NG
+Lost File:	..\Xiaomi_K7S_Inf&Mac_20210813\dclib.dll
+
+2022-07-26 18:37:21	NG
+..\Xiaomi_K7S_Inf&Mac_20210813\dclib.dll:	ed864e797a4f6a6ec42db66d829554b1
+
+2022-07-26 18:37:50	OK
+

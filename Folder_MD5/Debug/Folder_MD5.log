@@ -1,0 +1,18 @@
+﻿生成启动时间为 2024/11/16 8:29:50。
+     1>项目“D:\Project\Folder_MD5\Folder_MD5\Folder_MD5.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I.\GeneratedFiles /I. /IC:\Qt\Qt5.8.0\5.8\msvc2015\include /I.\GeneratedFiles\Debug /IC:\Qt\Qt5.8.0\5.8\msvc2015\include\QtCore /IC:\Qt\Qt5.8.0\5.8\msvc2015\include\QtGui /IC:\Qt\Qt5.8.0\5.8\msvc2015\include\QtWidgets /Zi /nologo /W1 /WX- /Od /Oy- /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /D _AFXDLL /Gm- /EHsc /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Folder_MD5.cpp
+         Folder_MD5.cpp
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Project\Folder_MD5\Win32\Debug\\Folder_MD5.exe" /NOLOGO /LIBPATH:C:\Qt\Qt5.8.0\5.8\msvc2015\lib qtmaind.lib Qt5Cored.lib Qt5Guid.lib Qt5Widgetsd.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"D:\Project\Folder_MD5\Win32\Debug\Folder_MD5.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Project\Folder_MD5\Win32\Debug\Folder_MD5.lib" /MACHINE:X86 /SAFESEH Debug\Folder_MD5.obj
+         Debug\moc_Folder_MD5.obj
+         Debug\qrc_Folder_MD5.obj
+         Debug\main.obj
+         Debug\md5.obj
+         Folder_MD5.vcxproj -> D:\Project\Folder_MD5\Win32\Debug\Folder_MD5.exe
+     1>已完成生成项目“D:\Project\Folder_MD5\Folder_MD5\Folder_MD5.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+
+已用时间 00:00:02.78

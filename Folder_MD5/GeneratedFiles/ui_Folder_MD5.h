@@ -91,7 +91,7 @@ public:
 
     void retranslateUi(QMainWindow *Folder_MD5Class)
     {
-        Folder_MD5Class->setWindowTitle(QApplication::translate("Folder_MD5Class", "Folder_MD5_V1_241114", Q_NULLPTR));
+        Folder_MD5Class->setWindowTitle(QApplication::translate("Folder_MD5Class", "Folder_MD5_V1_241128", Q_NULLPTR));
         label->setText(QApplication::translate("Folder_MD5Class", "Original Folder File list & MD5", Q_NULLPTR));
         label_2->setText(QApplication::translate("Folder_MD5Class", "Current Folder File list & MD5", Q_NULLPTR));
         pushButton_save->setText(QApplication::translate("Folder_MD5Class", "Origin Save", Q_NULLPTR));

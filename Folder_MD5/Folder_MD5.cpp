@@ -23,6 +23,7 @@ string pw = "";
 int use_Data[8192] = { 0 };
 
 int database_cnt = 0;
+int empty_cnt = 0;
 bool ok = true;
 
 void PrintMD5(const string &str, MD5 &md5) {
@@ -88,8 +89,8 @@ bool File_Name_Compare(string file) {
 
 	int x = file.length();
 	if (x > 4){
-		if (file[x - 3] == 't'&&file[x - 2] == 'x'&&file[x - 1] == 't')
-			return true;
+		//if (file[x - 3] == 't'&&file[x - 2] == 'x'&&file[x - 1] == 't')
+		//	return true;
 
 		if (file[x - 3] == 'r'&&file[x - 2] == 'a'&&file[x - 1] == 'w')
 			return true;
@@ -155,7 +156,7 @@ int checkPath(const std::string strPath)
 }
 
 
-void path_Sacn(string scan_path,int path_level) {
+int path_Sacn(string scan_path,int path_level) {
 
 	vector<string> files1 = getFiles(scan_path+"*");
 	vector<string> ::iterator iVector = files1.begin();
@@ -173,7 +174,13 @@ void path_Sacn(string scan_path,int path_level) {
 				database_cnt++;;
 			}
 			else {
-				path_Sacn(scan_path + (*iVector) + "\\", path_level + 1);
+				int fcnt = path_Sacn(scan_path + (*iVector) + "\\", path_level + 1);
+				if (fcnt == 0) {
+					string s = "folder_path" + to_string(empty_cnt);
+					string s1 = scan_path + (*iVector) + "\\";
+					WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), TEXT(".\\MD5_Setting.ini"));
+					empty_cnt++;
+				}
 			}
 			if (path_level == 0) {
 				string s = "folder_path" + to_string(path_cnt);
@@ -182,19 +189,41 @@ void path_Sacn(string scan_path,int path_level) {
 			path_cnt++;
 
 		}
+		else {	
+			string s2 = *iVector;
+			int s2_len = s2.length() - 1;
+
+			if (s2[s2_len] == '5'&&s2[s2_len-1] == 'D'&&s2[s2_len - 2] == 'M'&&s2[s2_len - 3] == '_') {
+				int xxx = 0;
+			}
+			else {
+
+				if (checkPath(scan_path + *iVector) == 0) {
+					string s = "folder_path" + to_string(empty_cnt);
+					string s1 = scan_path + (*iVector) + "\\";
+					WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), TEXT(".\\MD5_Setting.ini"));
+					empty_cnt++;
+				}
+			}
+		}
 		++iVector;
 	}
 
 	if (path_level == 0) {
 		WritePrivateProfileString(TEXT("Root_Path"), TEXT("Datebase_Size"), CA2CT(to_string(path_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
 	}
+
+	return files1.size();
 }
 
 void Folder_MD5::on_pushButton_save_clicked() {
 
 	database_cnt = 0;
+	empty_cnt = 0;
 	path_Sacn("..\\",0);
 	WritePrivateProfileString(TEXT("Scan_Setting"), TEXT("Datebase_Size"), CA2CT(to_string(database_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
+	WritePrivateProfileString(TEXT("Empty_Path"), TEXT("Datebase_Size"), CA2CT(to_string(empty_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
+
 	get_Setting();
 
 }

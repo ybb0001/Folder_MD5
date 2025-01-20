@@ -15,6 +15,9 @@ private slots :
 	void on_pushButton_save_clicked();
 	void on_pushButton_check_clicked();
 	void on_pushButton_login_clicked();
+	void on_pushButton_save_folder_clicked();
+
+
 
 private:
 	Ui::Folder_MD5Class ui;

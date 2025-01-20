@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Folder_MD5_V1_241128</string>
+   <string>Folder_MD5_250120 by songye.guo</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -159,6 +159,19 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>PW:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_save_folder">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>430</y>
+      <width>81</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Folder Save</string>
     </property>
    </widget>
   </widget>

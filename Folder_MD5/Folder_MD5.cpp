@@ -15,8 +15,8 @@
 using namespace std;
 
 string skip_Words[32] = { "" };
-string base_path[8192] = { "" };
-string file_hash[8192] = { "" };
+string base_path[16384] = { "" };
+string file_hash[16384] = { "" };
 string root_path[1024] = { "" };
 
 string pw = "";
@@ -29,7 +29,6 @@ bool ok = true;
 void PrintMD5(const string &str, MD5 &md5) {
 	cout << "MD5(\"" << str << "\") = " << md5.toString() << endl;
 }
-
 
 string FileDigest(const string &file) {
 
@@ -155,8 +154,23 @@ int checkPath(const std::string strPath)
 	}
 }
 
+string remove_first_path(string str) {
 
-int path_Sacn(string scan_path,int path_level) {
+	int x = 6, len = str.length()-1;
+	while (x < len) {
+		if (str[x] != '\\'&&str[x] != '/') {
+			x++;
+		}
+		else { 
+			x++;
+			break; 
+		}
+	}
+	string a = "..\\" + str.substr(x);
+	return a;
+}
+
+int path_Sacn(string scan_path,int path_level,CString set_path, int option) {
 
 	vector<string> files1 = getFiles(scan_path+"*");
 	vector<string> ::iterator iVector = files1.begin();
@@ -167,24 +181,36 @@ int path_Sacn(string scan_path,int path_level) {
 
 			if (checkPath(scan_path + *iVector) == 1) {
 				string s = "base_path" + to_string(database_cnt);
-				WritePrivateProfileString(TEXT("Database_Path"), CA2CT(s.c_str()), CA2CT((scan_path + *iVector).c_str()), TEXT(".\\MD5_Setting.ini"));
+				if (option == 0) {
+					WritePrivateProfileString(TEXT("Database_Path"), CA2CT(s.c_str()), CA2CT((scan_path + *iVector).c_str()), set_path);
+				}
+				else if (option == 1) {
+					string b = remove_first_path(scan_path + *iVector);
+					WritePrivateProfileString(TEXT("Database_Path"), CA2CT(s.c_str()), CA2CT(b.c_str()), set_path);
+				}
 				s = "file_hash" + to_string(database_cnt);
 				string m = FileDigest(scan_path + *iVector);
-				WritePrivateProfileString(TEXT("Database_MD5"), CA2CT(s.c_str()), CA2CT(m.c_str()), TEXT(".\\MD5_Setting.ini"));
+				WritePrivateProfileString(TEXT("Database_MD5"), CA2CT(s.c_str()), CA2CT(m.c_str()), set_path);
+
 				database_cnt++;;
 			}
 			else {
-				int fcnt = path_Sacn(scan_path + (*iVector) + "\\", path_level + 1);
+				int fcnt = path_Sacn(scan_path + (*iVector) + "\\", path_level + 1, set_path, option);
 				if (fcnt == 0) {
 					string s = "folder_path" + to_string(empty_cnt);
 					string s1 = scan_path + (*iVector) + "\\";
-					WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), TEXT(".\\MD5_Setting.ini"));
+					if (option == 0) {
+						WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), set_path);
+					}
+					else {
+						WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(remove_first_path(s1).c_str()), set_path);
+					}
 					empty_cnt++;
 				}
 			}
 			if (path_level == 0) {
 				string s = "folder_path" + to_string(path_cnt);
-				WritePrivateProfileString(TEXT("Root_Path"), CA2CT(s.c_str()), CA2CT((*iVector).c_str()), TEXT(".\\MD5_Setting.ini"));
+				WritePrivateProfileString(TEXT("Root_Path"), CA2CT(s.c_str()), CA2CT((*iVector).c_str()), set_path);
 			}
 			path_cnt++;
 
@@ -192,16 +218,19 @@ int path_Sacn(string scan_path,int path_level) {
 		else {	
 			string s2 = *iVector;
 			int s2_len = s2.length() - 1;
-
 			if (s2[s2_len] == '5'&&s2[s2_len-1] == 'D'&&s2[s2_len - 2] == 'M'&&s2[s2_len - 3] == '_') {
 				int xxx = 0;
 			}
 			else {
-
 				if (checkPath(scan_path + *iVector) == 0) {
 					string s = "folder_path" + to_string(empty_cnt);
 					string s1 = scan_path + (*iVector) + "\\";
-					WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), TEXT(".\\MD5_Setting.ini"));
+					if (option == 0) {
+						WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(s1.c_str()), set_path);
+					}
+					else {
+						WritePrivateProfileString(TEXT("Empty_Path"), CA2CT(s.c_str()), CA2CT(remove_first_path(s1).c_str()), set_path);
+					}
 					empty_cnt++;
 				}
 			}
@@ -210,7 +239,7 @@ int path_Sacn(string scan_path,int path_level) {
 	}
 
 	if (path_level == 0) {
-		WritePrivateProfileString(TEXT("Root_Path"), TEXT("Datebase_Size"), CA2CT(to_string(path_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
+		WritePrivateProfileString(TEXT("Root_Path"), TEXT("Datebase_Size"), CA2CT(to_string(path_cnt).c_str()), set_path);
 	}
 
 	return files1.size();
@@ -220,9 +249,10 @@ void Folder_MD5::on_pushButton_save_clicked() {
 
 	database_cnt = 0;
 	empty_cnt = 0;
-	path_Sacn("..\\",0);
-	WritePrivateProfileString(TEXT("Scan_Setting"), TEXT("Datebase_Size"), CA2CT(to_string(database_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
-	WritePrivateProfileString(TEXT("Empty_Path"), TEXT("Datebase_Size"), CA2CT(to_string(empty_cnt).c_str()), TEXT(".\\MD5_Setting.ini"));
+	CString set_path = TEXT(".\\MD5_Setting.ini");
+	path_Sacn("..\\",0, set_path,0);
+	WritePrivateProfileString(TEXT("Scan_Setting"), TEXT("Datebase_Size"), CA2CT(to_string(database_cnt).c_str()), set_path);
+	WritePrivateProfileString(TEXT("Empty_Path"), TEXT("Datebase_Size"), CA2CT(to_string(empty_cnt).c_str()), set_path);
 
 	get_Setting();
 
@@ -268,7 +298,6 @@ bool Folder_MD5::path_Check(QString scan_path) {
 	return ok;
 }
 
-
 void Folder_MD5::on_pushButton_check_clicked() {
 
 	ok = true;
@@ -308,6 +337,40 @@ void Folder_MD5::on_pushButton_check_clicked() {
 
 }
 
+void Folder_MD5::on_pushButton_save_folder_clicked() {
+
+	string s = "..\\";
+	vector<string> files1 = getFiles(s + "*");
+	vector<string> ::iterator iVector = files1.begin();
+	ui.data_Base->setText("");
+	ui.current_Data->setText("");
+
+	while (iVector != files1.end())
+	{
+		if (!File_Name_Compare(*iVector)) {
+
+			if (checkPath(s+*iVector)==0) {
+				string a = s + (*iVector) + "\\";
+				database_cnt = 0;
+				empty_cnt = 0;
+				string b = s + (*iVector) + "\\MD5_Setting.ini";
+				CopyFile(TEXT(".\\MD5_Setting.ini"), CA2CT(b.c_str()), false);
+
+				CString set_path(b.c_str());
+				path_Sacn(a, 0, set_path, 1);
+				WritePrivateProfileString(TEXT("Scan_Setting"), TEXT("Datebase_Size"), CA2CT(to_string(database_cnt).c_str()), set_path);
+				WritePrivateProfileString(TEXT("Empty_Path"), TEXT("Datebase_Size"), CA2CT(to_string(empty_cnt).c_str()), set_path);
+				
+				ui.current_Data->setTextColor(QColor(0, 0, 255, 255));
+				ui.current_Data->insertPlainText(a.c_str());
+				ui.current_Data->insertPlainText(" MD5 save done\n");
+
+			}
+		}
+		++iVector;
+	}
+
+}
 
 void Folder_MD5::on_pushButton_login_clicked() {
 

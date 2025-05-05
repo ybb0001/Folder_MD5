@@ -38,6 +38,7 @@ public:
     QPushButton *pushButton_login;
     QLineEdit *pw;
     QLabel *label_4;
+    QPushButton *pushButton_save_folder;
 
     void setupUi(QMainWindow *Folder_MD5Class)
     {
@@ -82,6 +83,9 @@ public:
         label_4 = new QLabel(centralWidget);
         label_4->setObjectName(QStringLiteral("label_4"));
         label_4->setGeometry(QRect(100, 440, 21, 16));
+        pushButton_save_folder = new QPushButton(centralWidget);
+        pushButton_save_folder->setObjectName(QStringLiteral("pushButton_save_folder"));
+        pushButton_save_folder->setGeometry(QRect(370, 430, 81, 30));
         Folder_MD5Class->setCentralWidget(centralWidget);
 
         retranslateUi(Folder_MD5Class);
@@ -91,7 +95,7 @@ public:
 
     void retranslateUi(QMainWindow *Folder_MD5Class)
     {
-        Folder_MD5Class->setWindowTitle(QApplication::translate("Folder_MD5Class", "Folder_MD5_V1_241128", Q_NULLPTR));
+        Folder_MD5Class->setWindowTitle(QApplication::translate("Folder_MD5Class", "Folder_MD5_250120 by songye.guo", Q_NULLPTR));
         label->setText(QApplication::translate("Folder_MD5Class", "Original Folder File list & MD5", Q_NULLPTR));
         label_2->setText(QApplication::translate("Folder_MD5Class", "Current Folder File list & MD5", Q_NULLPTR));
         pushButton_save->setText(QApplication::translate("Folder_MD5Class", "Origin Save", Q_NULLPTR));
@@ -104,6 +108,7 @@ public:
         label_3->setText(QApplication::translate("Folder_MD5Class", "supported by songye.guo@samsung.com", Q_NULLPTR));
         pushButton_login->setText(QApplication::translate("Folder_MD5Class", "login", Q_NULLPTR));
         label_4->setText(QApplication::translate("Folder_MD5Class", "PW:", Q_NULLPTR));
+        pushButton_save_folder->setText(QApplication::translate("Folder_MD5Class", "Folder Save", Q_NULLPTR));
     } // retranslateUi
 
 };
